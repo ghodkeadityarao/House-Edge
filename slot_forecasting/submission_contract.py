@@ -57,7 +57,7 @@ def inspect_archive(content):
             if not isinstance(config, dict) or set(config) != {"image", "command"}:
                 raise ValidationError("reproduce.json needs exactly image and command.")
             if not isinstance(config["image"], str) or not re.fullmatch(r"[a-z][a-z0-9_-]{0,31}", config["image"]):
-                raise ValidationError("image must name an organizer-approved environment.")
+                raise ValidationError("image must name an supported environment.")
             command = config["command"]
             if (not isinstance(command, list) or not 1 <= len(command) <= 64
                     or any(not isinstance(x, str) or not x or len(x) > 4096 or "\x00" in x for x in command)):

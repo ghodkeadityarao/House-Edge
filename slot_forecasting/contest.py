@@ -58,7 +58,7 @@ def score_contest_files(submission, targets, queries, conditions, reference, *, 
 
 
 def finalize_reviews(technical, review_rows):
-    """Combine organizer-generated technical points with two or more human reviews."""
+    """Combine generated technical points with two or more human reviews."""
     if not technical:
         raise ValidationError("No eligible teams to finalize.")
     for value in technical.values():

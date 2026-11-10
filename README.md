@@ -1,6 +1,11 @@
-# House Edge
+<h1 align="center">House Edge</h1>
 
-Predicts the odds of a slot machine's next payout (0×, 1×, 2×, 5× or 20×) from its spin history.
+<p align="center">
+  Forecasting a slot machine's next payout odds (0×, 1×, 2×, 5× or 20×) from its spin history.<br>
+  <img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-blue">
+  <img alt="NumPy" src="https://img.shields.io/badge/numpy-only-informational">
+  <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-green">
+</p>
 
 For each query the model returns five probabilities that sum to 1, using only ticks before the cutoff. It does not fit a generic regressor. It performs exact Bayesian inference over the rules that generate the data: which lagged payouts matter, in which direction, and when a machine's behavior changes.
 
@@ -16,6 +21,15 @@ Error is measured against the true probabilities on the validation data and norm
 The second dataset uses different lag rules. The model fitted to the first scored worse than the baseline there, so the rules are refitted from each dataset's own training data. Scores are cross-validated: each episode's logit correction is fitted without that episode. Held-out checks and a backtest on unseen histories matched these figures within their confidence intervals.
 
 ## How it works
+
+```mermaid
+flowchart LR
+    A[Spin history before cutoff] --> B[Rule discovery on stable machines]
+    B --> C[Bayesian inference per machine]
+    C --> D[Pool flip evidence across the episode]
+    D --> E[Logit correction]
+    E --> F[Five payout probabilities]
+```
 
 1. **Rule discovery.** Stable histories are used to learn which lag sets (1 to 3 lags) predict a win, along with each set's truth table, the payout-size lags and the shared-machine lag.
 2. **Inference.** For each machine, the model weighs rule direction, sign-flip timing and payout-table hypotheses against the history before the cutoff. It pools flip evidence across the episode.

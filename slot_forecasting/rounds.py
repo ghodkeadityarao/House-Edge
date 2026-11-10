@@ -22,7 +22,7 @@ def round_metadata(public):
         raise ValidationError("This command requires supported temporal round data (v2 or v3).")
     name = metadata.get("round")
     if name not in ROUND_POINTS or metadata.get("max_points") != ROUND_POINTS[name]:
-        raise ValidationError("Expected main=60 or adaptation=40 in metadata; old 80/20 kits must be updated by organizers.")
+        raise ValidationError("Expected main=60 or adaptation=40 in metadata; unsupported point scale.")
     if not isinstance(metadata.get("season_id"), str) or not re.fullmatch(r"[0-9a-f]{24}", metadata["season_id"]):
         raise ValidationError("Invalid season_id.")
     return metadata

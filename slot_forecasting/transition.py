@@ -1,4 +1,4 @@
-"""An editable participant baseline: local conditional counts with optional decay."""
+"""A simple editable baseline: local conditional counts with optional decay."""
 from .baseline import FrequencyForecaster
 from .schema import PAYOUTS, ValidationError, finite_number, index_history, integer
 

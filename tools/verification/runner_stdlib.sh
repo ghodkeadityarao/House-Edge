@@ -1,5 +1,5 @@
 #!/bin/bash
-# Imitate the guide's runner: Python 3.13 standard library only (no NumPy installed), two CPUs,
+# Imitate the target runner: Python 3.13 standard library only (no NumPy installed), two CPUs,
 # 16 GiB, read-only /submission and /data, separate scratch /tmp, writable /output, no network.
 set -e
 SP="$1"; UVW="$2"; ENTRY="$3"; COPY_TO="$4"

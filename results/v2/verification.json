@@ -4,6 +4,6 @@
   "max_probability_difference": 0.0,
   "prediction_seconds": 25.164737799670547,
   "queries": 1536,
-  "zip_bytes": 30525601,
-  "zip_sha256": "d1ff1a7d346b0aa9e655e0800cc02c5c010cf0f8adff943887a0bba38d0be059"
+  "zip_bytes": 30525560,
+  "zip_sha256": "512b50968b348e2059b8dc8ea1b8b693f1c33a380353c935c6b9dab3ac14c20f"
 }
